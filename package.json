@@ -8,13 +8,12 @@
     "start": "node server.js"
   },
   "engines": {
-    "node": "12.18.3"
+    "node": "v12.18.3"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SupriyaChinthakuntla/pb-server.git"
   },
-
   "keywords": [],
   "author": "",
   "license": "ISC",
