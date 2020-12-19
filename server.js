@@ -6,7 +6,6 @@ const mongoose = require('mongoose');
 const pbModel = require('./model/budget');
 const bodyParser = require('body-parser')
 const accessTokenKey = 'My super secret key';
-const bcrypt = require('bcrypt');
 
 const userModel = require('./model/users');
 const users = require('./routes/users');
