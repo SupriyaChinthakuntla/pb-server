@@ -7,6 +7,7 @@ const router = express.Router();
 const jwt_decode = require('jwt-decode');
 const exjwt = require('express-jwt');
 const cors = require('cors');
+
 router.use(cors());
 
 const accessTokenKey = 'My super secret key';
@@ -29,7 +30,7 @@ router.post('/', async (req, res) => {
     if (!validPassword) {
         return res.status(204).send('Incorrect email or password.');
     }
-    const token = jwt.sign({ _id: user._id,username: user.username }, accessTokenKey,{expiresIn:'60s'});    
+    const token = jwt.sign({ _id: user._id,username: user.username }, accessTokenKey,{expiresIn:'600s'});    
     loginStatus = true;
     var decoded_token = jwt_decode(token);
     res.status(200).json({

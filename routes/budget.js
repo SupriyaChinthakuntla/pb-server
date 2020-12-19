@@ -8,6 +8,8 @@ const jwt = require('jsonwebtoken');
 const cors = require('cors');
 router.use(cors());
 
+
+
 const secretKey = 'My super secret key';
 const jwtMW = exjwt({
     secret : secretKey,
