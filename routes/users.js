@@ -8,10 +8,10 @@ router.use(cors());
 
 router.post('/', async (req, res) => {       
  
-    // let user = await userModel.findOne({ username: req.body.username });
-    // if (user) {
-    //     return res.status(400).send('That user already exists!');
-    // } else {
+    let user = await userModel.findOne({ username: req.body.username });
+    if (user) {
+        return res.status(400).send('That user already exists!');
+    } else {
         user = new userModel({
             username: req.body.username,
             email: req.body.email,
@@ -21,7 +21,7 @@ router.post('/', async (req, res) => {
         user.password = await bcrypt.hash(user.password, salt);
         await user.save();
         res.send(user);
-    // }
+    }
 });
 
 
