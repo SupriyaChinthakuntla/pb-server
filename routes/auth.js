@@ -38,23 +38,23 @@ router.post('/', async (req, res) => {
     })
 });
 
-router.post('/users', async (req, res) => {       
+// router.post('/users', async (req, res) => {       
  
-    let user = await userModel.findOne({ username: req.body.username });
-    if (user) {
-        return res.status(400).send('That user already exists!');
-    } else {
-        user = new userModel({
-            username: req.body.username,
-            email: req.body.email,
-            password: req.body.password
-        });
-        const salt = await bcrypt.genSalt(10);
-        user.password = await bcrypt.hash(user.password, salt);
-        await user.save();
-        res.send(user);
-    }
-});
+//     let user = await userModel.findOne({ username: req.body.username });
+//     if (user) {
+//         return res.status(400).send('That user already exists!');
+//     } else {
+//         user = new userModel({
+//             username: req.body.username,
+//             email: req.body.email,
+//             password: req.body.password
+//         });
+//         const salt = await bcrypt.genSalt(10);
+//         user.password = await bcrypt.hash(user.password, salt);
+//         await user.save();
+//         res.send(user);
+//     }
+// });
 
 router.get('/',(req,res)=>{
     res.send("hello");    
