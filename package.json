@@ -12,7 +12,7 @@
     "url": "git+https://github.com/SupriyaChinthakuntla/pb-server.git"
   },
   "engines": {
-    "node": "12.18.3"
+    "node": "v12.18.3"
   },
   "keywords": [],
   "author": "",
