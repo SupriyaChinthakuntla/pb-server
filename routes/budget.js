@@ -2,7 +2,7 @@ const mongoose  = require('mongoose');
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
-const budgetModel = require('../model/budget');
+const budgetModel = require('./model/budget');
 const exjwt = require('express-jwt');
 const jwt = require('jsonwebtoken');
 const cors = require('cors');
@@ -13,31 +13,36 @@ const jwtMW = exjwt({
     secret : secretKey,
     algorithms: ['HS256']
 })
-        
-    router.get('/',jwtMW,(req,res)=>{  
-        console.log(req.params);
-        userid = String(req.query.userid);
-        console.log(userid);
-        budgetModel.find({username:userid})
+
+router.get('/',jwtMW,(req,res)=>{  
+    // console.log(req.query)
+    userid = String(req.query.userid);
+    console.log(userid);
+    budgetModel.find({username:userid})
     .then((data)=>{
+        console.log(data);
         res.status(200).send(data);
     })
     .catch((err)=>{
+        console.log(err);
         res.status(500).send();
     })    
 })
 
-router.post('/',jwtMW, async (req,res)=>{
+router.post('/',jwtMW,async (req,res)=>{
+    console.log("inside post");
+    console.log(req.body);    
+    //let record = await budgetModel.findOne({ title: req.body.title });
     let record = await budgetModel.findOne({$and: [{title:req.body.title},{username:req.body.username}]});
-    if(record) {
+    if(record){
         return res.status(400).send('That expense already exists!');
-    } else {
+    }else{
     budgetinfo = new budgetModel({
         title: req.body.title,
         budget: req.body.budget,
         maxbudget: req.body.maxbudget,
         color: req.body.color,
-        username: req.body.username   
+        username:req.body.username   
     });
     
     await budgetinfo.save();
