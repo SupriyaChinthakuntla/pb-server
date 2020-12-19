@@ -22,7 +22,6 @@ const userSchema = mongoose.Schema({
     },
     repassword: {
         type: String,
-        required: true,
         minlength: 5,
         maxlength: 1024
     }
