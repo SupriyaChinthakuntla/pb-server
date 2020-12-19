@@ -18,14 +18,10 @@ const jwtMW = exjwt({
 });
 router.post('/', async (req, res) => {    
  
-    //  Now find the user by their email address
     let user = await User.findOne({ username: req.body.username });
     if (!user) {
         return res.status(206).send('Incorrect username or password.');
     }
- 
-    // Then validate the Credentials in MongoDB match
-    // those provided in the request
     const validPassword = await bcrypt.compare(req.body.password, user.password);
     if (!validPassword) {
         return res.status(204).send('Incorrect email or password.');
@@ -42,8 +38,25 @@ router.post('/', async (req, res) => {
     })
 });
 
+router.post('/users', async (req, res) => {       
+ 
+    let user = await userModel.findOne({ username: req.body.username });
+    if (user) {
+        return res.status(400).send('That user already exists!');
+    } else {
+        user = new userModel({
+            username: req.body.username,
+            email: req.body.email,
+            password: req.body.password
+        });
+        const salt = await bcrypt.genSalt(10);
+        user.password = await bcrypt.hash(user.password, salt);
+        await user.save();
+        res.send(user);
+    }
+});
+
 router.get('/',(req,res)=>{
-    console.log("inside");
     res.send("hello");    
 })
 
