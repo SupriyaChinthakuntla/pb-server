@@ -6,7 +6,6 @@ const mongoose = require('mongoose');
 const pbModel = require('./model/budget');
 const bodyParser = require('body-parser')
 const accessTokenKey = 'My super secret key';
-const bcrypt = require('bcrypt');
 
 const userModel = require('./model/users');
 const users = require('./routes/users');
@@ -17,9 +16,9 @@ app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get('/hello',(req,res)=>{
-    res.send("sample text");    
-});
+// app.get('/hello',(req,res)=>{
+//     res.send("sample text");    
+// });
 
 var url = 'mongodb+srv://supriya:12345@cluster0.pa8f0.mongodb.net/personalBudget?retryWrites=true&w=majority';
 
@@ -28,14 +27,14 @@ mongoose.connect(url,{ useNewUrlParser: true, useUnifiedTopology: true,useCreate
     .catch(err => console.error('Something went wrong', err));
 
 
-app.use((req,res,next)=>{
-    res.setHeader('Access-Control-Allow-Origin','http://localhost:3000');
-    res.setHeader('Access-Control-Allow-Headers','Content-type,Authorization');
-    next();
-})    
+// app.use((req,res,next)=>{
+//     res.setHeader('Access-Control-Allow-Origin','http://localhost:3000');
+//     res.setHeader('Access-Control-Allow-Headers','Content-type,Authorization');
+//     next();
+// })    
 
 app.use(express.json());
-app.use('', express.static('public'));
+// app.use('', express.static('public'));
 app.use('/users', users);    
 app.use('/auth', auth);    
 app.use('/budget', budget);
