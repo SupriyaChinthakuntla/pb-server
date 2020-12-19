@@ -10,7 +10,9 @@
     "type": "git",
     "url": "git+https://github.com/SupriyaChinthakuntla/personal-budget.git"
   },
-  "engines": { "node": "12.18.3"},
+  "engines": {
+    "node": "12.18.3"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
