@@ -20,7 +20,12 @@ mongoose.connect(url,{ useNewUrlParser: true, useUnifiedTopology: true,useCreate
     .then(() => console.log('Now connected to MongoDB!'))
     .catch(err => console.error('Something went wrong', err));
 
- 
+
+ app.use((req,res,next)=>{
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Access-Control-Allow-Headers','Content-type,Authorization');
+        next();
+    })  
 
 app.use(express.json());
 app.use('/users', users);    
