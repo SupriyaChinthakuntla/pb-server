@@ -16,9 +16,9 @@ app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
 app.use(cors());
 
-router.get('/',(req,res)=> {
-    res.send("Hello");
-})
+// router.get('/',(req,res)=> {
+//     res.send("Hello");
+// })
 
 var url = 'mongodb+srv://supriya:12345@cluster0.pa8f0.mongodb.net/personalBudget?retryWrites=true&w=majority';
 
