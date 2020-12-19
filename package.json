@@ -4,11 +4,12 @@
   "description": "The path to NGInx main folder: /usr/share/nginx/html",
   "main": "index.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SupriyaChinthakuntla/personal-budget.git"
+    "url": "git+https://github.com/SupriyaChinthakuntla/pb-server.git"
   },
   "engines": {
     "node": "12.18.3"
@@ -17,9 +18,9 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/SupriyaChinthakuntla/personal-budget/issues"
+    "url": "https://github.com/SupriyaChinthakuntla/pb-server/issues"
   },
-  "homepage": "https://github.com/SupriyaChinthakuntla/personal-budget#readme",
+  "homepage": "https://github.com/SupriyaChinthakuntla/pb-server#readme",
   "dependencies": {
     "bcrypt": "^5.0.0",
     "cors": "^2.8.5",
