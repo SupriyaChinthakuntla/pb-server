@@ -9,7 +9,6 @@ const cors = require('cors');
 router.use(cors());
 
 const accessTokenKey = 'My super secret key';
-const refreshKey = "Refresh token key"
 
 const jwtMW = exjwt({
     secret: accessTokenKey,
@@ -27,7 +26,6 @@ router.post('/', async (req, res) => {
         return res.status(204).send('Incorrect email or password.');
     }
     const token = jwt.sign({ _id: user._id,username: user.username }, accessTokenKey,{expiresIn:'3600s'});
-    // const refreshToken = jwt.sign({ _id: user._id,username: user.username }, refreshKey,{expiresIn:'6000s'});
     loginStatus = true;
     var decoded_token = jwt_decode(token);
     res.status(200).json({
